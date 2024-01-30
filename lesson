@@ -1,0 +1,108 @@
+select buyprice-5 from products;
+
+select * from customers where contactFirstName <> 'Jean';
+
+select * from customers where contactFirstName = 'Peter' or contactFirstName = 'juan';
+
+select * from customers where contactFirstName in ('Peter', 'juan' , 'Eric');
+
+select * from customers where contactFirstName like 'J%a%n'; -- -> jan juan  j sfsdfsfsdfs fsdfss a sdfsdfsdfs n
+
+
+select * from customers where contactFirstName not in ('Peter', 'juan' , 'Eric');
+
+select * from products;
+
+select * from products where (productLine = 'motorcycles' or productLine = 'classic cars') and id >= 10 and id <= 35;
+-- in, between
+select * from products where productLine in ( 'motorcycles','classic cars') and id between 10 and 35;
+
+select * from employees where lastName not like 'b%';
+
+select * from customers where country like 'usa';
+
+select * from products where productName like '%dodge%' and buyPrice between 10 and 50;
+
+-- price minimal from products
+select max(buyprice) as minimalPrice from products;
+
+select lastName as familyName , officeCode as office, jobTitle as position from employees ;
+
+select * from products;
+
+
+select count(*) from products where buyPrice > 20;
+
+select  count(distinct productLine) from products;
+
+
+select sum(quantityOrdered) from orderdetails;
+
+-- Return the total price payed for product with code S18_2795 from orderDetails
+select * from orderdetails;
+select * from orderdetails where productCode like 'S18_2795';
+
+select sum(quantityOrdered*priceEach) from orderdetails where  productCode like 'S18_2795';
+
+select * from customers;
+update customers set contactlastname = '' where customerNumber = 103 ;
+select * from customers where contactLastName is null;
+
+select * from orders where orderDate like '%-02-%' ;
+select * from orders where year(orderDate) = 2003;
+
+select state, customername from customers where state is not null;
+
+select count(*), country from customers group by country;
+select count(*) as count , country from customers group by country order by count desc;
+
+ 
+ select * from customers;
+ select * from offices;
+ 
+ select city, customerNumber as custnumOfficeCode,phone from customers
+ union
+ select city, officeCode, phone from offices ;
+ 
+ 
+ select * from products where productLine like 'motorcycles'
+ union
+ select * from products where productLine like 'classic Cars';
+
+
+
+
+select * from products;
+
+select avg(buyPrice), productLine from products group by productLine;
+
+select * from employees;
+select count(employeeNumber), jobTitle from employees group by jobTitle;
+
+
+select * from customers;
+select * from offices;
+
+select customers.customerName, customers.city, offices.officeCode, offices.addressLine1
+from customers join offices on customers.city = offices.city;
+
+select c.customerName, c.city, o.officeCode, o.addressline1
+from customers c left join offices o on o.city = c.city order by o.officeCode desc;
+
+select c.customerName, o.city, o.officeCode, o.addressline1
+from customers c right join offices o on o.city = c.city;
+
+select c.customerName, o.city, o.officeCode, o.addressline1
+from offices o left join customers c  on o.city = c.city ;
+
+
+select * from customers join offices on customers.city = offices.city;
+
+
+
+
+
+
+
+
+
