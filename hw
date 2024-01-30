@@ -1,0 +1,7 @@
+List all customers with their corresponding sales representative's first and last name:
+Find the product lines with their respective product count:
+List all orders along with the customer name and order status:
+Retrieve the product details along with their product line information:
+Get the employees who have reported to another employee (i.e., have a manager):
+Find the average credit limit for customers in each country:
+Calculate the total quantity in stock for each product line:
